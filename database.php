@@ -1,6 +1,13 @@
 <?PHP
 require_once('connection.php');
 
+$clear_sql='DELETE FROM giftinfo
+WHERE name="";';
+
+mysqli_query($conn,$clear_sql);
+
+
+
 $target_dir = "giftimage/";
 $target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
 
@@ -9,10 +16,10 @@ $imageFileType = pathinfo($target_file,PATHINFO_EXTENSION);
 if(isset($_POST['submit'])){
     $check = getimagesize($_FILES["fileToUpload"]["tmp_name"]);
     if($check !== false) {
-        echo "File is an image - " . $check["mime"] . ".";
+        echo "File is an image - " . $check["mime"] . ".". '<br>';
         $uploadOk = 1;
     } else {
-        echo "File is not an image.";
+        echo "File is not an image.". '<br>';
         $uploadOk = 0;
     }
 }
@@ -27,7 +34,7 @@ if ($uploadOk == 0) {
 // if everything is ok, try to upload file
 } else {
     if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
-        echo "The file ". basename( $_FILES["fileToUpload"]["name"]). " has been uploaded." . '<br>';
+        echo "The file ". basename( $_FILES["fileToUpload"]["name"]). " has been uploaded." . '<br>'. '<br>';
     } else {
         echo "Sorry, there was an error uploading your file." . '<br>';
     }
@@ -135,10 +142,10 @@ foreach($_POST['type'] as $selected){
     echo "successfully insert has_gifttype<br>";
 }
 
-echo "gifttable:<br>";
+echo "gifttable:<br>". '<br>';
 $gifttable_query = "SELECT * FROM giftinfo";
 $giftresult = mysqli_query($conn,$gifttable_query);
-
+$i=0;
 if(mysqli_num_rows($giftresult) > 0){
     echo "<table>";
     echo "<tr>";
@@ -150,6 +157,7 @@ if(mysqli_num_rows($giftresult) > 0){
     echo "<th>popularity</th>";
     echo "</tr>";
     while($row = mysqli_fetch_array($giftresult)){
+        $i+=1;
         echo "<tr>";
         echo "<td>" . $row['id'] . "</td>";
         echo "<td>" . $row['name'] . "</td>";
@@ -160,6 +168,8 @@ if(mysqli_num_rows($giftresult) > 0){
         echo "</tr>";
     }
     echo "</table>";
+    echo "<br>table number: '$i'";
 } else{
     echo "No records matching your query were found.";
 }
+
