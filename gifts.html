@@ -9,6 +9,10 @@
 
     <!-- Bootstrap -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <!-- Style Sheet -->
+    <link rel="stylesheet" href="style.css">
+    <!-- Javascript -->
+    <script type="text/javascript" src="script.js"></script>
 
 </head>
 
@@ -30,11 +34,50 @@
   <!-- Page contents -->
   <div class='container'>
     <div class='text-center'>
-
       <h1>Gift Survey</h1>
-      <p>This is where the survey will go.</p>
-
     </div>
+    <form>
+    <p>
+      1. What is the target age range of your boy?
+    </p>
+    <input type="radio" name="age" value="baby">Baby<br>
+    <input type="radio" name="age" value="child">Child<br>
+    <input type="radio" name="age" value="teenager">Teenager<br>
+    <input type="radio" name="age" value="adult">Adult<br>
+    <input type="radio" name="age" value="middleaged">Middle-Aged<br>
+    <input type="radio" name="age" value="senior">Senior<br>
+
+    <br>
+
+    <p>
+      2. What is he interested in?
+    </p>
+    <input type="checkbox" name="interests" value="technology">Technology<br>
+    <input type="checkbox" name="interests" value="sports">Sports<br>
+    <input type="checkbox" name="interests" value="drawing">Drawing<br>
+    <input type="checkbox" name="interests" value="videogames">Video Games<br>
+    <input type="checkbox" name="interests" value="toys">Toys<br>
+    <input type="checkbox" name="interests" value="clothing">Clothing<br>
+    <input type="checkbox" name="interests" value="bags">Backpacks and Bags<br>
+    <input type="checkbox" name="interests" value="other">Other<br>
+
+    <br>
+
+    <p>
+      3. What is the highest amount you are willing to spend?
+    </p>
+
+      <input type="radio" name="10" value="10"checked>$10<br>
+      <input type="radio" name="25" value="25">$25<br>
+      <input type="radio" name="50" value="50">$50<br>
+      <input type="radio" name="100" value="100">$100<br>
+      <input type="radio" name="250" value="250">$250<br>
+      <input type="radio" name="500" value="500">$500<br>
+    </form>
+
+    <br>
+
+    <btn class='btn btn-default'>Show me the gifts!</btn>
   </div>
 
 </body>
