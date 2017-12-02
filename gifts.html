@@ -36,61 +36,71 @@
   <div class='container'>
     <div class='text-center'>
       <h1>Gift Survey</h1>
+      <p>Tell us a little bit of information about your boy and we will suggest some gifts!</p>
     </div>
-    <form>
     <p>
       1. What is the target age range of your boy?
     </p>
-    <input type="radio" name="age" value="baby">Baby<br>
-    <input type="radio" name="age" value="child">Child<br>
-    <input type="radio" name="age" value="teenager">Teenager<br>
-    <input type="radio" name="age" value="adult">Adult<br>
-    <input type="radio" name="age" value="middleaged">Middle-Aged<br>
-    <input type="radio" name="age" value="senior">Senior<br>
+    <button class="btn age-btn" value="7" id="baby">Baby</button>
+    <button class="btn age-btn" value="8" id="child">Child</button>
+    <button class="btn age-btn" value="9" id="teenager">Teenager</button>
+    <button class="btn age-btn" value="10" id="adult">Adult</button>
+    <button class="btn age-btn" value="11" id="middleaged">Middle-Aged</button>
+    <button class="btn age-btn" value="12" id="senior">Senior</button>
 
-    <br>
+    <br><br>
 
     <p>
       2. What is he interested in?
     </p>
-    <input type="checkbox" name="interests" value="technology">Technology<br>
-    <input type="checkbox" name="interests" value="sports">Sports<br>
-    <input type="checkbox" name="interests" value="drawing">Drawing<br>
-    <input type="checkbox" name="interests" value="videogames">Video Games<br>
-    <input type="checkbox" name="interests" value="toys">Toys<br>
-    <input type="checkbox" name="interests" value="clothing">Clothing<br>
-    <input type="checkbox" name="interests" value="bags">Backpacks and Bags<br>
-    <input type="checkbox" name="interests" value="other">Other<br>
 
-    <br>
+    <button class="btn type-btn" value="1" id="technology">Technology</button>
+    <button class="btn type-btn" value="2" id="sports">Sports</button>
+    <button class="btn type-btn" value="3" id="drawing">Drawing</button>
+    <button class="btn type-btn" value="4" id="music">Music</button>
+    <button class="btn type-btn" value="5" id="videogames">Video Games</button>
+    <button class="btn type-btn" value="8" id="toys">Toys</button>
+    <button class="btn type-btn" value="9" id="clothing">Clothing</button>
+    <button class="btn type-btn" value="11" id="bags">Bags and Backpacks</button>
+    <button class="btn type-btn" value="12" id="other">Other</button>
+
+    <br><br>
 
     <p>
       3. What is the highest amount you are willing to spend?
     </p>
 
-      <input type="radio" name="10" value="10"checked>$10<br>
-      <input type="radio" name="25" value="25">$25<br>
-      <input type="radio" name="50" value="50">$50<br>
-      <input type="radio" name="100" value="100">$100<br>
-      <input type="radio" name="250" value="250">$250<br>
-      <input type="radio" name="500" value="500">$500<br>
-    </form>
+      <button class="btn bound-btn selected-btn" value="10" id="10">$10</button>
+      <button class="btn bound-btn" value="25" id="25">$25</button>
+      <button class="btn bound-btn" value="50" id="50">$50</button>
+      <button class="btn bound-btn" value="100" id="100">$100</button>
+      <button class="btn bound-btn" value="250" id="250">$250</button>
+      <button class="btn bound-btn" value="500" id="500">$500</button>
 
-    <br>
+    <br><br>
 
     <btn class='btn btn-default showresult'>Show me the gifts!</btn>
-      
-      
-      
-      
-      
-    <div id="showData">
-          
-    </div>  
-      
-    
-      
-      
+
+    <br><br>
+
+    <a href="https://www.amazon.com/gp/product/B00DW1JT5G" target="_blank">
+      <div class="container-fluid listing">
+  		<div class="row listing">
+  			<div class="col-xs-4 text-center">
+  				<img class="gift-image" src="https://target.scene7.com/is/image/Target/50697186?wid=520&hei=520&fmt=pjpeg">
+        </div>
+  			<div class="col-xs-8">
+          <a href="https://www.amazon.com/gp/product/B00DW1JT5G" target="_blank">title goes here</a>
+          <br><br><br>
+          <h4>price goes here</h4>
+        </div>
+  		</div>
+  	 </div>
+    </a>
+
+    <div id="showData"></div>
+    <div id="giftList"></div>
+
   </div>
 
 </body>

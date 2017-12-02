@@ -1,8 +1,45 @@
-.nav-style {
-  background-color: #233278;
+body {
+  background-color: #ecf5ff
+}
+
+.selected-btn {
+  background-color: #3151ce;
   color: white;
 }
 
-body {
-  background-color: #ecf5ff
+.selected-btn:hover {
+  background-color: #3151ce;
+  color: white;
+}
+
+.listing {
+  border-radius: 50px;
+  background-color: #3151ce;
+  color: white;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  margin-bottom: 15px;
+  text-decoration: none;
+}
+
+.gift-image {
+  border-radius: 100px;
+  width: 200px;
+	height: 200px;
+}
+
+a {
+  font-size: 24px;
+  font-weight: bold;
+  color: white;
+  text-decoration: none;
+}
+
+a:hover {
+  color: white;
+}
+
+a:visited {
+  color: white;
+  text-decoration: none;
 }
