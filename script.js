@@ -6,7 +6,7 @@ $(document).ready(function() {
 	$('.age-btn').click(function(){
 		//Set the age group
 		age = parseInt(this.value);
-
+        console.log(age);
 		//Reset the colors of all the buttons
 		$('#baby').removeClass('selected-btn');
 		$('#child').removeClass('selected-btn');
@@ -36,6 +36,7 @@ $(document).ready(function() {
 			$(this).addClass('selected-btn');
 			types.add(type_int);
 		}
+        console.log(types);
 
 		$(this).blur();
 	});
@@ -78,11 +79,13 @@ $(document).ready(function() {
 					senior_id=12
 			*/
 			$example_age_id = age;//baby
-			var $query_for_single_agetype = "SELECT giftinfo.id,giftinfo.name,giftinfo.url,giftinfo.image_name,giftinfo.price,giftinfo.popularity FROM (SELECT * FROM gift_hasatype WHERE gift_hasatype.aid="+$example_age_id+") as certaintype LEFT JOIN giftinfo on certaintype.gid=giftinfo.id";
+		/*	
+        var $query_for_single_agetype = "SELECT giftinfo.id,giftinfo.name,giftinfo.url,giftinfo.image_name,giftinfo.price,giftinfo.popularity FROM (SELECT * FROM gift_hasatype WHERE gift_hasatype.aid="+$example_age_id+") as certaintype LEFT JOIN giftinfo on certaintype.gid=giftinfo.id";
 
 			ajaxquery(("age_id " + String(age) + ": "),$query_for_single_agetype);
 
 			console.log("age_query: " + typeof $query_for_single_agetype);
+        */
 
 			/*
 					tech_id=1
@@ -95,11 +98,34 @@ $(document).ready(function() {
 					bag=11
 					others=12
 			*/
-			types.forEach(function(value){
-				$example_type_id = value;
+            
+            $example_type_id = "";
+        var arrays=[];
+        types.forEach(function(value){
+           arrays.push(value); 
+        });
+        if(arrays.length==1){
+            $example_type_id = $example_type_id+arrays[0];
+        }else{
+            for(var $i=0;$i<arrays.length;$i++){
+                if($i==arrays.length-1){
+                    $example_type_id = $example_type_id + arrays[i];
+                }else{
+                    $example_type_id = $example_type_id + arrays[i] + "OR gift_hasgtype.typeid = ";
+                }
+                
+                
+                
+            }
+                /*
 				var $query_for_single_gifttype = "SELECT giftinfo.id,giftinfo.name,giftinfo.url,giftinfo.image_name,giftinfo.price,giftinfo.popularity FROM (SELECT * FROM gift_hasgtype WHERE gift_hasgtype.typeid="+$example_type_id+") as certaintype LEFT JOIN giftinfo on certaintype.gid=giftinfo.id";
 				ajaxquery("giftByTag",$query_for_single_gifttype);
-			});
+                */
+			
+        }
+        console.log($example_type_id);
+        console.log("wtf");
+			
 
 			// $example_type_id = 1;//tech
 			// var $query_for_single_gifttype = "SELECT giftinfo.id,giftinfo.name,giftinfo.url,giftinfo.image_name,giftinfo.price,giftinfo.popularity FROM (SELECT * FROM gift_hasgtype WHERE gift_hasgtype.typeid="+$example_type_id+") as certaintype LEFT JOIN giftinfo on certaintype.gid=giftinfo.id";
@@ -107,10 +133,14 @@ $(document).ready(function() {
 
 			//next is about money, result array would be all gifts whose prices are below certatin number
 			$example_bound = bound;
-			var $query_for_price = "SELECT * FROM giftinfo where giftinfo.price<="+$example_bound;
-			ajaxquery("giftByPrice",$query_for_price);
-
-
+//			var $query_for_price = "SELECT * FROM giftinfo where giftinfo.price<="+$example_bound;
+//			ajaxquery("giftByPrice",$query_for_price);
+            
+            
+        
+            var $query_for_all = "SELECT * from (SELECT giftinfo.id,giftinfo.name,giftinfo.url,giftinfo.image_name,giftinfo.price,giftinfo.popularity FROM (SELECT * FROM gift_hasgtype WHERE gift_hasgtype.typeid="+$example_type_id+") as certaintype LEFT JOIN giftinfo on certaintype.gid=giftinfo.id) as typeresult INNER JOIN (SELECT giftinfo.id,giftinfo.name,giftinfo.url,giftinfo.image_name,giftinfo.price,giftinfo.popularity FROM (SELECT * FROM gift_hasatype WHERE gift_hasatype.aid="+$example_age_id+") as certaintype LEFT JOIN giftinfo on certaintype.gid=giftinfo.id) as ageresult on typeresult.id=ageresult.id INNER JOIN (SELECT * FROM giftinfo where giftinfo.price<="+$example_bound+") as priceresult on typeresult.id=priceresult.id";
+        
+            ajaxquery("allgifts: ",$query_for_all);
 
 	});
 });
