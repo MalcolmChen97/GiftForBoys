@@ -109,22 +109,22 @@ $(document).ready(function() {
         }else{
             for(var $i=0;$i<arrays.length;$i++){
                 if($i==arrays.length-1){
-                    $example_type_id = $example_type_id + arrays[i];
+                    $example_type_id = $example_type_id + arrays[$i];
                 }else{
-                    $example_type_id = $example_type_id + arrays[i] + "OR gift_hasgtype.typeid = ";
+                    $example_type_id = $example_type_id + arrays[$i] + " OR gift_hasgtype.typeid = ";
                 }
                 
                 
                 
             }
+            console.log($example_type_id);
                 /*
 				var $query_for_single_gifttype = "SELECT giftinfo.id,giftinfo.name,giftinfo.url,giftinfo.image_name,giftinfo.price,giftinfo.popularity FROM (SELECT * FROM gift_hasgtype WHERE gift_hasgtype.typeid="+$example_type_id+") as certaintype LEFT JOIN giftinfo on certaintype.gid=giftinfo.id";
 				ajaxquery("giftByTag",$query_for_single_gifttype);
                 */
 			
         }
-        console.log($example_type_id);
-        console.log("wtf");
+       
 			
 
 			// $example_type_id = 1;//tech
@@ -154,7 +154,7 @@ function ajaxquery( querytype, samplequery){
         success: function(data, status) {
 
             var resultarray=JSON.parse(data);//here is what can you use in javascript
-            $( "#showData" ).append("<br>"+querytype+JSON.stringify(resultarray)+"<br>");
+           // $( "#showData" ).append("<br>"+querytype+JSON.stringify(resultarray)+"<br>");
 
 						//Display the result on the front end.
 						/*
@@ -162,11 +162,15 @@ function ajaxquery( querytype, samplequery){
 						Switch out 0 when you iterate through, and remember to replace the
 						placeholder image with the actual image
 						*/
-						var gift_title = data[0][1];
-						var gift_price = data[0][4];
-						var gift_link = data[0][2];
-						var gift_img = "http://via.placeholder.com/200x200"	//placeholder images for now since I don't have access
+                        for(let eachgift of resultarray ){
+                            var gift_title = eachgift[1];
+						var gift_price = eachgift[4];
+						var gift_link = eachgift[2];
+						var gift_img = "giftimage/"+eachgift[3];	//placeholder images for now since I don't have access
+                        
 						displayGift(gift_title, gift_price, gift_link, gift_img);
+                        }
+						
 
         },
         error: function(xhr, desc, err) {
@@ -187,7 +191,7 @@ function displayGift(title, price, link_url, img_url){
 										<div class="col-xs-8">\
 											<a href="'+ link_url + '" target="_blank">' + title + '</a>\
 											<br><br><br>\
-											<h4>' + price + '</h4>\
+											<h1>$' + price + '</h1>\
 										</div>\
 									</div>\
 								 </div>\

@@ -1,0 +1,100 @@
+#mylogo{
+    color:white;
+    background-color:darkcyan;
+    padding:;
+    border-radius: 20px;
+    margin-left:10px;
+    height: 100%;
+}
+
+
+.nav-link{
+    color:black;
+}
+
+.indexpage{
+    top: 150px;
+    position: relative;
+}
+
+#gift_img{
+    width: 60%;
+}
+
+.age-btn{
+    background-color: azure
+}
+
+.firstquestion{
+    position:relative;
+    top: 140px;
+}
+
+#intro{
+    text-align: center;
+    font-family:monospace;
+    font-size: 2em;
+    margin-bottom: 50px;
+}
+.selected-btn {
+  background-color: #3151ce;
+  color: white;
+}
+
+.selected-btn:hover {
+  background-color: #3151ce;
+  color: white;
+}
+
+#show_second{
+    border: 1px black solid;
+}
+.listing {
+  border-radius: 50px;
+  background-color: #3151ce;
+  color: white;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  margin-bottom: 15px;
+  text-decoration: none;
+}
+
+.gift-image {
+  border-radius: 100px;
+  width: 200px;
+	height: 200px;
+}
+
+a {
+  font-size: 24px;
+  font-weight: bold;
+  color: white;
+  text-decoration: none;
+}
+
+a:hover {
+  color: white;
+}
+
+a:visited {
+  color: white;
+  text-decoration: none;
+}
+
+
+@media all and (max-width: 1024px) {
+  .indexpage{
+        top: 100px;;
+        position: relative;
+    }
+    
+    #gift_img{
+        width: 100%;
+    }
+    
+    #intro{
+    
+    font-size: 1.3em;
+    
+}
+}
